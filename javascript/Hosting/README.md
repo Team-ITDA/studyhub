@@ -39,7 +39,9 @@ value = "Hello World!";
 let letValue = "Hello Let";
 ```
 
-- 함수 선언문의 호이스팅의
+---------------------
+
+- 함수 선언문의 호이스팅
 
 ```
 printHello(); // "Hello"

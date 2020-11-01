@@ -1,4 +1,4 @@
-#Try-with-resources
+# Try-with-resources
 
 자바를 이용해 외부 자원에 접근하는 경우 한가지 주의해야할 점은 외부자원을 사용한 뒤 제대로 자원을 닫아줘야한다는 점이다.
 
@@ -210,7 +210,7 @@ CustomResource.close() is called
 
   
 ---
-#####**참고 및 출처)**
+##### **참고 및 출처)**
 
 >[https://codechacha.com/ko/java-try-with-resources/](https://codechacha.com/ko/java-try-with-resources/)  
 [http://tutorials.jenkov.com/java-exception-handling/try-with-resources.html](http://tutorials.jenkov.com/java-exception-handling/try-with-resources.html)

@@ -224,7 +224,7 @@ const aa // Missing initializer in const declaration
 <br><br><br>
 <hr />
 
-##정리
+## 정리
    
 | 이름 | 단위 | 변수 재선언 | 재할당 | TDZ의 영향 |
 | --- | :---:| :---: | :---: | :---: |

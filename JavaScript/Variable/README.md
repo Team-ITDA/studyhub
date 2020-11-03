@@ -224,17 +224,17 @@ const aa // Missing initializer in const declaration
 <br><br><br>
 <hr />
 
-###정리
+##정리
    
 | 이름 | 단위 | 변수 재선언 | 재할당 | TDZ의 영향 |
 | --- | :---:| :---: | :---: | :---: |
 |`var` | function | O | O | X |
 |`let` | block | X | O | O |
-|`const` | block | X | X | O |
+|`const` | block | X | Both O and X (객체일때만 가능) | O |
 
 
 
-[참조1](https://gist.github.com/LeoHeo/7c2a2a6dbcf80becaaa1e61e90091e5d)
+[참조_fromLeoHeo](https://gist.github.com/LeoHeo/7c2a2a6dbcf80becaaa1e61e90091e5d)
 
 
 

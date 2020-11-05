@@ -1,9 +1,47 @@
 this
 ==========
 
-> 일반적으로 메소드를 호출한 객체가 저장되어 있는 속성
+<Strong>Java vs JavaScript</Strong>
 
+Java에서의 this
+
+> Java에서의 this는 객체 자신(self)을 가리키는 참조변수로, this가 객체 자신에 대한 참조 값을 가지고 있다는 뜻이다.
+>
+> 주로 매개변수와 객체 자신이 가지고 있는 멤버변수명이 같을 경우 이를 구분하기위해 사용된다.
+```
+public Class Car{
+    private String name;            // a
+
+    public Person(String name) {    // b
+        this.name = name;           // this.a == b;
+    }
+}
+```
 <br>
+
+JavaScript에서의 this
+> JavaScript의 경우 함수 호출 방식에 의해 this에 바인딩할 어떤 객체가 동적으로 결정된다.
+>
+>   > 함수호출
+>   >
+>   > 내부 함수는 일반함수, 메소드, 콜백함수 어디에서 선언되었는지에 관계없이 this는 전역객체를 바인딩한다.
+>   >
+>   > 전역 객체는 모든 객체의 최상위 객체를 의미하며 일반적으로 Browser-side에서는 window, Server-side(Node.js)에서는 global 객체를 의미한다. 
+
+```
+var obj = {
+    a : function() {
+        console.log(this);
+    }
+};
+
+obj.a();    // obj
+```
+위 코드에서 this는 window나 global 객체가 아닌 obj를 가리킨다.
+
+객체의 메소드 호출할 때 this를 내부적으로 바꿔주기 때문이다.
+
+<br><br>
 
 ```
 function MyClass () {
@@ -109,7 +147,7 @@ $("#myButton").click(function () {
 2의 data는 `#myButton` 객체의 data, 3의 data는 전역 변수인 data(1의 data)를 나타낸다.
  
 <br><br>
-##메소드에서의 this
+## 메소드에서의 this
 ```
 var data = 10;              // 1
 
@@ -187,3 +225,10 @@ my1.method1();
 > 메소드에서 this는 <strong>메소드 객체</strong>
 >
 > 메소드 내부의 중첩 함수에서 this는 <strong>window</strong>
+
+<br><br>
+---------
+## 참조
+[참조1_버미노트](https://beomy.tistory.com/6)
+
+[참조2_공부혜옹](https://hae-ong.tistory.com/14)

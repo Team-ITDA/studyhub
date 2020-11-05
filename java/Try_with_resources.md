@@ -231,6 +231,7 @@ CustomResource.close() is called
 
 <br>
 <br>
+
 #### 핵심정리)
 
 꼭 회수해야 하는 자원을 다룰때는 try-finally 말고, try-with-resources를 사용하자.

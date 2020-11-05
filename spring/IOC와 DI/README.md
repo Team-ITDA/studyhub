@@ -84,7 +84,7 @@ public class ITDA{
   }
 
   public Minsub gaepodong(){
-    return new Jinmin();
+    return new Minsub();
   }
 }
 
@@ -156,10 +156,11 @@ public class YoungGon{
 }
 ```
 
-제 3자로부터 <code>child</code> 필드의 인스턴스를 받아와서 적용하기 때문에 제 3자가 인스턴스를 결정하고 
+제 3자로부터 <code>child</code> 필드의 인스턴스를 받아와서 적용하기 때문에 제 3자가 인스턴스를 결정하고 제공함을 알 수 있다.
 
-위 코드에서는 <code>Engine</code> 클래스 타입의 <code>v5</code> 필드에 인스턴스를 생성하지 않아도 우리는 <code>v5</code>를 쓸 수 있다
-왜냐하면 <code>Engine</code> 클래스에 <code>Component</code> 어노테이션을 붙여주면 Spring의 컨테이너가 알아서 인스턴스를 생성해주고 클래스 사이를 자동으로 연결해준다
+Spring 에서는 <code>Component</code> 어노테이션을 붙여주면 Spring의 컨테이너가 알아서 인스턴스를 생성해주고 클래스 사이를 자동으로 연결해준다
+
+때문에 Spring 컨테이너가 DI 개념의 제 3자 역할을 한다.
 
 
 이렇게 Spring에서 관리하는 클래스들을 Spring에선 <code>Bean</code> 이라고 부르며
@@ -168,6 +169,15 @@ public class YoungGon{
 
 - <code>BeanFactory</code> : IoC/DI 기본 기능
 - <code>ApplicationContext</code> : <code>BeanFactory</code> 모든 기능 포함, 일반적으로 추천
+
+DI Container 를 사용함으로써 <br>
+
+코드 작성 시 의존관계가 나타나지 않고, 결합도가 낮은 코드를 만들 수 있게 해준다
+
+따라서 변경과 확장을 자유롭게 할 수 있기 때문에 시스템이 유연해진다
+
+
+
 
 > 참고 <br>
 > [[Spring] Spring의 정의와 기본 개념](https://sabarada.tistory.com/66?category=803157) <br>

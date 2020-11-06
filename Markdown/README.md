@@ -197,7 +197,7 @@ ex)
 
 <br/>
 <br/>
-#### **참고**
+#### 참고
 
 
 - [허니몬의 마크다운 작성법](https://gist.github.com/ihoneymon/652be052a0727ad59601)

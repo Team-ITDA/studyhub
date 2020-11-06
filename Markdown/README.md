@@ -197,8 +197,8 @@ ex)
 
 <br/>
 <br/>
-#### 참고
 
+#### 참고
 
 - [허니몬의 마크다운 작성법](https://gist.github.com/ihoneymon/652be052a0727ad59601)
 - [놀부의 마크다운 사용법](https://nolboo.kim/blog/2014/04/15/how-to-use-markdown/)

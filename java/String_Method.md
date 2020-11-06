@@ -35,7 +35,9 @@ s.indexOf(찾을문자, index위치이후부터);
 찾지 못하면 -1 반환
 
 <br/>
+
 참고)
+
 ### lastindexOf(String str)
 
 ```java

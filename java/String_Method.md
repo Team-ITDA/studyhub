@@ -6,27 +6,6 @@
 그렇기 때문에 문자열의 내용이 변경되는 메소드를 사용하더라도, 문자열 자신이 변경되는게 아니라 변경된 새로운 문자열이 반환된다는 사실을 잊으면 안된다.
 
 
-[length](#int-length)
-[indexOf](#int-indexofstring-str)
-[charAt](#char-charAtint-index)
-[toCharArray](#)
-[compareTo](#)
-[replace](#)
-[split](#)
-[substring](#)
-[toLowerCase && toUpperCase](#)
-[contact](#)
-[trim](#)
-[contains](#)
-[equals](#)
-[startsWith && endsWith](#)
-[matches](#)
-[toString](#)
-[valueOf](#)
-[toString vs valueOf](#)
-[format](#)
-
-
 ## int length()
 
 ```java

@@ -155,8 +155,8 @@ class Test {
 	}
 	
 	public static void main(String[] args){
-    	Test.checkAreaSize(new Rectangle());	// true
-    	Test.checkAreaSize(new Square()); 		// false
+    		Test.checkAreaSize(new Rectangle());	// true
+    		Test.checkAreaSize(new Square()); 	// false
   }
 }
 ```

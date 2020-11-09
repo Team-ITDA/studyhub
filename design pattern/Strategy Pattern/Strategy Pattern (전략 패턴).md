@@ -31,7 +31,7 @@
 
 ```java
 class abstract Kart {
-  	public void drive() {
+    public void drive() {
         System.out.println("열심히 운전한다.");
     }
     public abstract void attack();
@@ -105,7 +105,7 @@ class BananaKart extends Kart {
 
 class SpeedKart extends Kart {
     public SpeedKart(Weapon weapon) { super(weapon); }
-	public void speedUp() { System.out.println("일정시간동안 속도가 빨라진다."); }
+    public void speedUp() { System.out.println("일정시간동안 속도가 빨라진다."); }
 }
 ```
 

@@ -90,7 +90,7 @@ class abstract Kart {
     
     public void setWeapon(Weapon weapon) { this.weapon = weapon; }
     
-    public void drive() { System.out.println("열심히 운전한다.");}
+    public void drive() { System.out.println("열심히 운전한다."); }
     
     public void attack() { weapon.attack(); }
 }

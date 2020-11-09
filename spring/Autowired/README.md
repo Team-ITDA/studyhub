@@ -4,7 +4,7 @@
 - 의존성을 주입받기 위한 어노테이션
 - <code>@Autowired</code> 가 선언된 코드들은 스프링 컨테이너에게 등록된 <code>Bean</code> 객체들을 자동으로 받아 사용할 수 있다
 
-```
+```java
 @Component
 public class Jinmin{
   @Autowird
@@ -177,7 +177,7 @@ public interface TeamITDA{
 어떠한 <code>Bean</code> 을 주입시킬 시 명시 해주어야한다
 
 
-#### 1. @Primary
+### 1. @Primary
 
 최우선으로 선택될 <code>Bean</code> 을 명시할 때 사용한다
 
@@ -189,7 +189,7 @@ public class Minsub implements TeamITDA{
 }
 ```
 
-#### 2. @Qualifier
+### 2. @Qualifier
 
 해당 <code>Bean</code> 의 값을 참조할 때 사용한다
 

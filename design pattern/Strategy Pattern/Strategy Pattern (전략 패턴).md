@@ -10,7 +10,7 @@
 
 
 
-![](.\strategy-pattern.png)
+![](https://github.com/Team-ITDA/studyhub/blob/leehj/design%20pattern/Strategy%20Pattern/strategy-pattern.png)
 
 > **Strategy**
 >

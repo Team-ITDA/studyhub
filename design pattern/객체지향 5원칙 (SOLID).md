@@ -86,7 +86,7 @@ interface MusicApp {
 }
 
 class Melon implements MusicApp {
-	//생략
+	// 생략
 }
 
 class AppleMusic implements MusicApp {
@@ -96,7 +96,7 @@ class AppleMusic implements MusicApp {
 }
 
 class MusicPlayer {
-	//생략
+	// 생략
 }
 ```
 
@@ -155,8 +155,8 @@ class Test {
 	}
 	
 	public static void main(String[] args){
-    Test.checkAreaSize(new Rectangle()); // true
-    Test.checkAreaSize(new Square()); // false
+    	Test.checkAreaSize(new Rectangle());	// true
+    	Test.checkAreaSize(new Square()); 		// false
   }
 }
 ```
@@ -215,6 +215,48 @@ class Tiger implements Animal {
 - 하위 레벨에서의 구현이 변경되더라도 상위 레벨에 영향을 주지 않는다.
 
 - 즉, **변경에 강하며 유지보수가 쉽다**.
+
+```java
+interface MusicApp {
+	public void play();
+}
+
+class Melon implements MusicApp {
+	public void play() {
+		System.out.println("play melon");
+	}
+}
+
+class MusicPlayer {
+    // 구체적인 클래스와 의존관계를 맺음
+	private Melon melon;
+
+	public MusicPlayer(Melon melon) {
+		this.melon = melon;
+	}
+
+	public void play() {
+		this.musicApp.play();
+	}
+}
+```
+
+Melon 클래스는 구체적으로 구현되었기 때문에 변하기 쉽다. DIP 원칙은 자주 변하는 것보다, 변화가 거의 없는 것에 의존하라는 것이다.  
+
+```java
+// 생략
+
+// 추상화 객체와 의존 관계를 맺음
+private MusicApp musicApp;
+
+public MusicPlayer(MusicApp musicApp) {
+		this.musicApp = musicApp;
+}
+
+// 생략
+```
+
+
 
 <br />
 

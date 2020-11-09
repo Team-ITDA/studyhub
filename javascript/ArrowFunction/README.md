@@ -17,7 +17,7 @@ Arrow Function  (=>)
 
 기본 문법을 알아보자.
 
-```
+```javascript
 // 매개변수 지정 방법
     () => { ... }   // 매개변수가 없을 경우
      x => { ... }   // 매개변수가 한개인 경우, 소괄호를 생략할 수 있다.
@@ -325,7 +325,6 @@ button.addEventListener('click', function() {
 ----------
 
 [참조_poiemaweb] (https://poiemaweb.com/es6-arrow-function)
-
 
 
 

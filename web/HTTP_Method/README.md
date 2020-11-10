@@ -303,6 +303,6 @@ PUT은 전체 자원을 업데이트 하기 때문에 동일 자원에 대해서
 
 ##### 참고 및 출처)
 
-[https://medium.com/@lyhlg0201/http-method-d561b77df7](https://medium.com/@lyhlg0201/http-method-d561b77df7)
-[https://zorba91.tistory.com/136](https://zorba91.tistory.com/136)
-[https://javaplant.tistory.com/18](https://javaplant.tistory.com/18)
+[https://medium.com/@lyhlg0201/http-method-d561b77df7](https://medium.com/@lyhlg0201/http-method-d561b77df7)  
+[https://zorba91.tistory.com/136](https://zorba91.tistory.com/136)  
+[https://javaplant.tistory.com/18](https://javaplant.tistory.com/18)  

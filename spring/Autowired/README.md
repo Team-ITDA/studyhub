@@ -27,7 +27,7 @@ public class Jinmin{
 
 > 아직까지 경험해보지 못했지만
 
-> 다른 라이브브러리등을 사용하는데, 꼭 필요하지 않는 경우, 없으면 없는데 null로 구동후
+> 다른 라이브러리등을 사용하는데, 꼭 필요하지 않는 경우, 없으면 없는곳 null로 구동후
 >
 > if 처리로 해당 로직을 스킵하는 경우가 있을수도 있겠네요.
 
@@ -128,7 +128,24 @@ Spring <code>4.3</code> 부터 <code>@Autowired</code> 를 생성자 방법으�
 
     하지만 생성자의 경우 컴파일 단계에서 순환 참조했을 경우 실행조차 안된다
 
-4. 테스트 코드를 작성할 수 있다
+4. 테스트에 용이하다
+
+```java
+public class Dundung{
+  @Autowired
+  private StudyHub studyhub;
+}
+```
+
+위와 같은 필드 인젝션을 가진 클래스를 테스트한다고 가정하였을 때, 어떻게 할 것인가?
+
+Spring <code>Container</code> 에 의존하고 있기 때문에 <code>Reflection API</code> 를 사용하지 않는 이상
+
+<code>Dundung</code> 객체를 생성 시 <code>StudyHub</code> 를 초기화하는 것은 불가능하다
+
+따라서 생성자를 이용하여 필드를 초기화하는 것이 안전하고
+
+OOP 관점에서 자연스럽다
 
 
 ------
@@ -241,4 +258,5 @@ public class Jinmin implements TeamITDA{
 
 > 원문 <br>
 > [스프링 - 생성자 주입을 사용해야 하는 이유, 필드인젝션이 좋지 않은 이유](https://yaboong.github.io/spring/2019/08/29/why-field-injection-is-bad/) <br>
-> [@Autowired의 사용](https://tbang.tistory.com/87)
+> [@Autowired의 사용](https://tbang.tistory.com/87) <br>
+> [Constructor Dependency Injection in Spring](https://www.baeldung.com/constructor-injection-in-spring)

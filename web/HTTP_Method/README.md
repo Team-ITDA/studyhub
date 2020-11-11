@@ -12,7 +12,7 @@ HTTP는 요청 메소드를 정의하여, 주어진 리소스에 수행하길 �
 
 # 요청 종류
 
-- GET, HEAD, PUT, POST, PATCH, DELETE, TRACE, OPTION, CONNECT
+- GET, HEAD, PUT, POST, PATCH, DELETE, TRACE, OPTIONS, CONNECT
 
 ## GET
 

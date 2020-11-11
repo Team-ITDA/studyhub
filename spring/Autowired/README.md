@@ -98,9 +98,9 @@ Spring <code>4.3</code> 부터 <code>@Autowired</code> 를 생성자 방법으�
 
 그 이유는
 
-1. 필드에 <code>final</code> 를 선언할 수 있다
-2. 생성자 파라미터가 많아지게 되면 리팩토링이 필요한다는 것을 인식할 수 있다
-3. 순환 참조를 방지할 수 있다
+#### 1. 필드에 <code>final</code> 를 선언할 수 있다
+#### 2. 생성자 파라미터가 많아지게 되면 리팩토링이 필요한다는 것을 인식할 수 있다
+#### 3. 순환 참조를 방지할 수 있다
     - 순환 참조
     ```java
     @Component
@@ -128,12 +128,17 @@ Spring <code>4.3</code> 부터 <code>@Autowired</code> 를 생성자 방법으�
 
     하지만 생성자의 경우 컴파일 단계에서 순환 참조했을 경우 실행조차 안된다
 
-4. 테스트에 용이하다
+
+#### 4. 테스트에 용이하다
 
 ```java
-public class Dundung{
+public class DunDung {
   @Autowired
   private StudyHub studyhub;
+
+  public StudyHub getStudyHub(){
+    return studyhub;
+  }
 }
 ```
 
@@ -143,9 +148,105 @@ Spring <code>Container</code> 에 의존하고 있기 때문에 <code>Reflection
 
 <code>Dundung</code> 객체를 생성 시 <code>StudyHub</code> 를 초기화하는 것은 불가능하다
 
+
+
 따라서 생성자를 이용하여 필드를 초기화하는 것이 안전하고
 
 OOP 관점에서 자연스럽다
+
+- *@DunDung 님과의 리뷰로 내용 추가합니다*
+
+스프링을 사용하면서 <code>Bean</code> 으로 등록 안 되어있는 객체에 의존성을 주입하는 일을 흔치 않다
+
+따라서 의존성을 주입받는 <code>Bean</code> 으로 객체를 <code>Mockito</code> 라이브러리를 사용하여 테스팅해본다면
+
+```java
+public class DunDungTest {
+  @InjectMocks
+  DunDung dunDung;
+
+  @Mock
+  StudyHub studyHub;
+
+  @Test
+  void notNullTest() {
+    assertNotNull(youngGon.getStudyHub()));
+  }
+
+  @Before
+  public void setUp() {
+    MockitoAnnotations.initMocks(this);
+  }
+}
+```
+
+위처럼 필드 인젝션을 하고 있는 <code>DunDung</code> 간단하게 테스팅 할 수 있다
+
+여기서 이슈가 되는 점이 있다
+
+의존성을 주입 받는 필드가 하나 더 추가 된다면?
+
+테스트 코드도 따라서 <code>Mock</code> 어노테이션 가진 필드를 추가해주어야 한다
+
+하지만 만약 까먹고 <code>Mock</code> 어노테이션 가진 필드를 추가해주지 않는다면?
+
+추가로 주입받은 필드와 관련 있는 코드를 테스트할 때까지 <u>오류 없이 작동</u>한다
+
+만약 추가로 주입받은 필드와 관련 있는 코드 테스팅하면 <code>NullPointException</code> 을 뱉을 것이다
+
+문제는 개발자는 협업이 필수적이다
+
+내가 작성한 코드를 다른 사람이 실행할 수도 있기 때문에 안전해야 한다
+
+개인적으로는 테스트 코드 또한 마찬가지라고 생각한다
+
+추가로 주입받은 필드와 관련 있는 코드 테스팅을 다른사람이 한다면 실제 클래스들을 다 알지 못하기 때문에 <code>NullPointException</code> 을 뱉는 원인을 찾아 로깅을 따라가는 번거로움이 생기게 된다
+
+애초에 이런 번거로움을 원천 차단할 수 있게 생성자 인젝션을 이용하여
+
+**컴파일 에러**를 뜨게 한다면 사전에 개발자가 알아차리고 깔끔하게 테스트를 진행할 수 있다
+
+```java
+@Component
+public class DunDung {
+  private StudyHub studyhub;
+  private WoowaCourse woowaCourse;//추가된 필드
+
+  public DunDung(StudyHub studyHub, WoowaCourse woowaCourse){
+    this.studyHub = studyHub;
+    this.woowaCourse = woowaCourse;
+  }
+
+  public StudyHub getStudyHub(){
+    return studyhub;
+  }
+
+  public WoowaCourse getWoowaCourse(){
+    return woowaCourse;
+  }
+}
+```
+
+```java
+public class DunDungTest {
+  DunDung dunDung;
+
+  @Mock
+  StudyHub studyHub;
+
+  //깜빡하고 추가하지 않음
+
+  @Test
+  void notNullTest() {
+    assertNotNull(youngGon.getStudyHub()));
+  }
+
+  @BeforeEach
+  void setUp() {
+    dunDung = new DunDung(studyHub);// 컴파일 에러
+  }
+}
+```
 
 
 ------
@@ -257,6 +358,7 @@ public class Jinmin implements TeamITDA{
 
 
 > 원문 <br>
-> [스프링 - 생성자 주입을 사용해야 하는 이유, 필드인젝션이 좋지 않은 이유](https://yaboong.github.io/spring/2019/08/29/why-field-injection-is-bad/) <br>
-> [@Autowired의 사용](https://tbang.tistory.com/87) <br>
-> [Constructor Dependency Injection in Spring](https://www.baeldung.com/constructor-injection-in-spring)
+> - [스프링 - 생성자 주입을 사용해야 하는 이유, 필드인젝션이 좋지 않은 이유](https://yaboong.github.io/spring/2019/08/29/why-field-injection-is-bad/)
+> - [@Autowired의 사용](https://tbang.tistory.com/87)
+> - [Constructor Dependency Injection in Spring](https://www.baeldung.com/constructor-injection-in-spring)
+> - [http://pillopl.github.io/constructor-injection/](http://pillopl.github.io/constructor-injection/)]

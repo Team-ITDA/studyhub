@@ -140,7 +140,7 @@ s1.equals(s2) result is same
   
 - 아래 그림을 통해 String Constant poop에 대해 정확히 이해할 수 있을 것이다.
 
-  ![스트링풀](C:\Users\jungk\Desktop\스트링풀.PNG)
+  ![StringPooq](https://user-images.githubusercontent.com/39195377/98771141-1b94e780-2427-11eb-8657-8f65b1b9dc94.PNG)
 
 
 
@@ -159,7 +159,7 @@ str = "KI HYUK";
 
 즉, 아래 그림처럼 heap 영역을 살펴보면 처음에는 str이 "KH"를 참조하다가,  "KI HYUK" 객체를 참조하도록 재할당했을 뿐이다. 따라서 "KH"라는 단어를 갖고있는 객체는 쓰레기값(Garbage Collection)의 대상이 된다.
 
-![스트링](C:\Users\jungk\Desktop\스트링.PNG)
+![String](https://user-images.githubusercontent.com/39195377/98771138-1a63ba80-2427-11eb-86a2-bddec37e2f06.PNG)
 
 
 
@@ -280,4 +280,10 @@ String은 불변의 객체라고 했다. 분명 String이 불변으로 설계된
 - **따라서, 문자열 연산이 엄청나게 많이 일어나지 않는 환경이라면 StringBuffer를 이용해 thread-safe하게 구현하는 것이 좋다는 의견이 있었다.**
 
 
+
+참고 자료
+
+------
+
+[자바의 신](http://www.yes24.com/Product/Goods/42643850) VOL1 14장 String class
 

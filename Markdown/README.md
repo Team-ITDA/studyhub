@@ -71,7 +71,7 @@
 ```
 ---
 
-##강조
+## 강조
 
 ```
 *single asterisks*    //이텔릭체
@@ -175,7 +175,7 @@ This is a normal paragraph:
 end code block.
 
 
-##### 주의)
+#### 주의)
 
 한줄 띄어쓰지 않으면 인식이 제대로 안되는 문제가 발생한다.
 

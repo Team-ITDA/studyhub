@@ -42,9 +42,9 @@ JSON은 일반 텍스트 포맷보다 효과적인 데이터 구조화가 가능
 
 ```JSON
 {
-  "name": "Lee",
+  "name": "Jinmin",
   "gender": "male",
-  "age": 20,
+  "age": 26,
   "alive": true
 }
 ```
@@ -84,22 +84,22 @@ JSON.stringify 메소드는 객체 JSON 형식의 문자열로 반환한다.
 const who = {
     name : 'Jinmin',
     gender : 'male',
-    age : '26'
+    age : 26
 };
 
 // 객체 -> JSON 형식의 문자열
 const strObject = JSON.stringify(who);
 console.log(typeof strObject, strObject);
-// string {"name":"Lee","gender":"male","age":20}
+// string {"name":"Jinmin","gender":"male","age":26}
 
 // 객체 -> JSON 형식의 문자열 + space
 const strPrettyObject = JSON.stringify(who, null, 2);
 console.log(typeof strPrettyObject, strPrettyObject);
 /*
 string {
-  "name": "Lee",
+  "name": "Jinmin",
   "gender": "male",
-  "age": 20
+  "age": 26
 }
 */
 
@@ -118,7 +118,7 @@ const strFilteredObject = JSON.stringify(who, filter, 2);
 console.log(typeof strFilteredObject, strFilteredObject);
 /*
 string {
-  "name": "Lee",
+  "name": "Jinmin",
   "gender": "male"
 }
 */

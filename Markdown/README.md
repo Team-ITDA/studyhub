@@ -67,25 +67,28 @@
 글을 입력 후 Enter 두 번 입력하여 공백 라인을 추가한다.
 
 문단을 구분할 수 있습니다.
-```
-
-## **이탤릭체**
-
-*이탤릭체* 로 표시하려면 원하는 곳을 `_`, `*`로 감싸주면 된다.
 
 ```
-_이탤릭_
-*이탤릭*
-```
+---
 
-## **볼드체**
-
-**볼드 처리할 곳**을 `_`, `*`을 두번씩 감싸주면 된다.
+##강조
 
 ```
-__볼드체__
-**볼드체**
+*single asterisks*    //이텔릭체
+_single underscores_  
+**double asterisks**  //볼드체
+__double underscores__
+~~cancelline~~
 ```
+
+*single asterisks*
+_single underscores_
+**double asterisks**
+__double underscores__
+~~cancelline~~
+
+>문장 중간에 사용할 경우에는 띄어쓰기를 사용하는것이 좋다.
+
 
 ---
 
@@ -148,26 +151,115 @@ __볼드체__
 
 ---
 
+## 들여쓰기
+
+4개의 공백 또는 하나의 탭으로 들여쓰기를 만나면 변환되기 시작하여 들여쓰지 않은 행을 만날때까지 변환이 계속된다.
+
+```
+This is a normal paragraph:
+
+    This is a code block.
+
+end code block.
+
+```
+
+실제로 적용해보면,
+
+ex)
+
+This is a normal paragraph:
+
+    This is a code block.
+
+end code block.
+
+
+##### 주의)
+
+한줄 띄어쓰지 않으면 인식이 제대로 안되는 문제가 발생한다.
+
+```
+This is a normal paragraph:
+    This is a code block.
+end code block.
+```
+
+적용 예)
+
+This is a normal paragraph:
+    This is a code block.
+end code block.
+
+---
+
 ## **수평선**
 
 
 수평선 을 만들 때는 다음과 같은 방법이 있다. 최소 개수(보통 3개)만 존재하며, 그 이상은 몇개를 써도 상관없다.
 
-> *** --- < hr / >
-
+```
+***
+---
+<hr/>
+````
 ---
 ***
 <hr/>
+
+## 코드블럭
+
+코드블럭은 다음과 같이 2가지 방식을 사용할 수 있다.
+
+* 코드블럭코드 **```**
+
+* `<pre><code>{code}</code></pre>` 이용방식
+
+<pre>
+<code>
+
+```
+public class BootSpringBootApplication {
+  public static void main(String[] args) {
+    System.out.println("Hello, Honeymon");
+  }
+
+}
+```
+</code>
+</pre>
+
+```
+<pre>
+<code>
+public class BootSpringBootApplication {
+  public static void main(String[] args) {
+    System.out.println("Hello, Honeymon");
+  }
+
+}
+</code>
+</pre>
+
+```
+---
 
 ## **링크**
 
 링크를 거는 방법은 `[링크명](URL)`로 사용하면 된다.그러면 해당 링크명에 입력한 URL로 링크가 걸린다.
 
-[네이버](naver.com)
+```
+[link keyword](url)
+```
+
+ex)
 
 ```
 [네이버](naver.com)
 ```
+[네이버](naver.com)
+
+---
 
 ### 문서내 링크걸기
 
@@ -194,6 +286,27 @@ ex)
 ```
 
 ---
+
+## 이미지
+
+```
+![image keyword](/path/img.이미지확장자)
+
+![이미지이름](이미지파일경로)
+
+```
+
+#### 다른 방법
+
+* 사이즈 조절 기능 시작하기위해선 `<img width="" height=""></img>` 를 사용한다.
+
+ex)
+```
+<img src="/path/to/img.jpg" width="450px" height="300px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
+<img src="/path/to/img.jpg" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img>
+
+```
+
 
 <br/>
 <br/>

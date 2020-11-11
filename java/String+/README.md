@@ -60,7 +60,7 @@ public class StringNull {
 
 
 
-- 이제 NUllPointerException이 발생하지 않도록 코드를 변경해보자.
+- 이제 NullPointerException이 발생하지 않도록 코드를 변경해보자.
 
 ```java
 public boolean nullCheck2(String text) {
@@ -126,19 +126,19 @@ s1==s2 result is same.
 s1.equals(s2) result is same
 ```
 
-일반적으로 생각하기에는 두 번째 if 문관 통과할 것이라고 생각할 수 있다. 그 이유는 객체는 반드시 equals() 메서드로 비교해야 한다고 배웠기 때문이다. 올바르게 배운 것이 맞다. 객체는 반드시 equals() 메소드로 비교해야 한다.
+일반적으로 생각하기에는 두 번째 if 문만 통과할 것이라고 생각할 수 있다. 그 이유는 객체는 반드시 equals() 메서드로 비교해야 한다고 배웠기 때문이다. 올바르게 배운 것이 맞다. 객체는 반드시 equals() 메소드로 비교해야 한다.
 
 하지만, 여기서 첫 번째 if문이 통과한 이유는 바로 자바에 **String Constant Pool** 이라는 것이 존재하기 때문이다. **String Constant Pool** 에 대해서 간단하게 이야기 하면, 자바에서는 객체들을 재사용 하기 위해 **String Constant Pool**  이라는 것이 만들어져 있고, String의 경우 동일한 값을 갖는 객체가 있으면 이미 존재하는(만든) 객체를 재사용한다. 따라서 s1과 s2의 객체는 실제로 같은 객체가 되는것이다.
 
 - 만약에 첫 번째 if문의 결과를 다르게 출력하고 싶다면 아래 코드처럼 String 객체를 직접 생성하면 된다
 
   - ```java
-    String s2 = new String("Check value");
+    String s2 = new String("Cat");
     ```
 
   - 이렇게 String 객체를 생성하면 값이 같은 String 객체를 생성한다고 하더라도 Constant Pool의 값을 재활용하지 않고 별도의 객체를 생성하게 된다.
   
-- 아래 그림을 통해 String Constant poop에 대해 정확히 이해할 수 있을 것이다.
+- 아래 그림을 통해 String Constant pool에 대해 정확히 이해할 수 있을 것이다.
 
   ![StringPooq](https://user-images.githubusercontent.com/39195377/98771141-1b94e780-2427-11eb-8657-8f65b1b9dc94.PNG)
 
@@ -198,7 +198,7 @@ str = "KI HYUK";
 
 ##### 2. 보안 기능
 
-- **String이 불변이 아니라면 보안상의 문제를 야기할 수 있습다.** 
+- **String이 불변이 아니라면 보안상의 문제를 야기할 수 있다.** 
   - 예를 들어, DB의 username과 password 라던가, 소켓 통신에서 host와 port에 대한 정보가 String으로 다루어지기 때문에 String이 불변이 아니라면, 해커의 공격으로부터 값이 변경되는 될 수 있다.
   - 네트워크 연결시 포트,파일 경로, db 연결에 필요한 URL도 모두 String으로 이루어져 있다. 그런데 이러한 String이 가변적이라면 누군가가 고의로든 실수로든 a를 b로 바꿔버리면 심각한 문제를 초래할 수 있다.
 

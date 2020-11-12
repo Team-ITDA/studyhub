@@ -30,10 +30,10 @@
 
 버전 까지 달아줘야한다. 그에 비해 스프링 부트는
 ```
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-thymeleaf</artifactId>
+</dependency>
 ```
 
 스프링부트는 버전 관리가 권장 버전으로 자동 설정이 되기 때문에 스프링에 비해 훨씬 편리하다. 심지어 스프링부트 메이븐말고 그래들은 훨씬 짧아진다. bulid.gradle에서 
@@ -132,7 +132,11 @@ spring.datasource.hikari.password= = 1234
 
 이런 차이랄까?
 
-또 스프링 부트는 톰캣이 내장되어 있다. 이건 서버 구동 시간이 절반 가까이 단축된다. 
+또 스프링 부트는 톰캣이 내장되어 있다. 이건 서버 구동 시간이 절반 가까이 단축된다.
+
+
+외장서버와 내장서버의 성능은 크게 차이가 나지 않지만 내장된 톰캣, jetty, underTow등의 서버를 이용해서
+별도의 서버 설치 없이 실행이 가능하기 때문에 스프링보다 시간이 약간 단축된다.
 
 또 내장 서블릿 컨테이너 덕분에 jar 파일로 간단 배포가 가능하다.
 

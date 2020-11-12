@@ -199,7 +199,7 @@ str = "KI HYUK";
 ##### 2. 보안 기능
 
 - **String이 불변이 아니라면 보안상의 문제를 야기할 수 있다.** 
-  - 예를 들어, DB의 username과 password 라던가, 소켓 통신에서 host와 port에 대한 정보가 String으로 다루어지기 때문에 String이 불변이 아니라면, 해커의 공격으로부터 값이 변경되는 될 수 있다.
+  - 예를 들어, DB의 username과 password 라던가, 소켓 통신에서 host와 port에 대한 정보가 String으로 다루어지기 때문에 String이 불변이 아니라면, 해커의 공격으로부터 값이 변경될 수 있다.
   - 네트워크 연결시 포트,파일 경로, db 연결에 필요한 URL도 모두 String으로 이루어져 있다. 그런데 이러한 String이 가변적이라면 누군가가 고의로든 실수로든 a를 b로 바꿔버리면 심각한 문제를 초래할 수 있다.
 
 ##### 3. 안전성(Thread-safe)

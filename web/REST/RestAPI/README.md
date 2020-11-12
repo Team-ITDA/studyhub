@@ -163,7 +163,7 @@ GET : /users/{userid}/devices (일반적으로 소유 ‘has’의 관계를 표
 
 상태코드에 대해서는
 
-[여기로!](../../HTTP응답코드/README.md))
+[여기로!](https://github.com/Team-ITDA/studyhub/tree/minsub/web/HTTPStatusCode)
 
 
 ---

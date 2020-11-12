@@ -48,6 +48,8 @@
 
 ### **###### H6**
 
+<br/>
+
 ---
 
 ## **줄바꿈**
@@ -67,25 +69,32 @@
 글을 입력 후 Enter 두 번 입력하여 공백 라인을 추가한다.
 
 문단을 구분할 수 있습니다.
-```
-
-## **이탤릭체**
-
-*이탤릭체* 로 표시하려면 원하는 곳을 `_`, `*`로 감싸주면 된다.
 
 ```
-_이탤릭_
-*이탤릭*
+
+<br/>
+
+---
+
+## 강조
+
+```
+*single asterisks*    //이텔릭체
+_single underscores_  
+**double asterisks**  //볼드체
+__double underscores__
+~~cancelline~~
 ```
 
-## **볼드체**
+*single asterisks*
+_single underscores_
+**double asterisks**
+__double underscores__
+~~cancelline~~
 
-**볼드 처리할 곳**을 `_`, `*`을 두번씩 감싸주면 된다.
+>문장 중간에 사용할 경우에는 띄어쓰기를 사용하는것이 좋다.
 
-```
-__볼드체__
-**볼드체**
-```
+<br/>
 
 ---
 
@@ -101,6 +110,8 @@ __볼드체__
 
 > If you can imagine it, you can achieve it; if you can dream it, you can become it.
 당신이 상상을 할 수 있다면 그것을 이룰 수 있고, 당신이 꿈꿀 수 있다면 그 꿈대로 될 수 있다.
+
+<br/>
 
 ---
 
@@ -120,6 +131,8 @@ __볼드체__
 3. 3번
 
 숫자의 순서와는 상관없이 첫 번째를 기준으로 자동으로 번호가 부여된다.
+
+<br/>
 
 ---
 
@@ -146,6 +159,52 @@ __볼드체__
     - 순서가 없는 목록2-1
 - 순서가 없는 목록3
 
+<br/>
+
+---
+
+## 들여쓰기
+
+4개의 공백 또는 하나의 탭으로 들여쓰기를 만나면 변환되기 시작하여 들여쓰지 않은 행을 만날때까지 변환이 계속된다.
+
+```
+This is a normal paragraph:
+
+    This is a code block.
+
+end code block.
+
+```
+
+실제로 적용해보면,
+
+ex)
+
+This is a normal paragraph:
+
+    This is a code block.
+
+end code block.
+
+
+#### 주의)
+
+한줄 띄어쓰지 않으면 인식이 제대로 안되는 문제가 발생한다.
+
+```
+This is a normal paragraph:
+    This is a code block.
+end code block.
+```
+
+적용 예)
+
+This is a normal paragraph:
+    This is a code block.
+end code block.
+
+<br/>
+
 ---
 
 ## **수평선**
@@ -153,21 +212,77 @@ __볼드체__
 
 수평선 을 만들 때는 다음과 같은 방법이 있다. 최소 개수(보통 3개)만 존재하며, 그 이상은 몇개를 써도 상관없다.
 
-> *** --- < hr / >
-
+```
+***
+---
+<hr/>
+````
 ---
 ***
 <hr/>
+
+<br/>
+
+---
+
+## 코드블럭
+
+코드블럭은 다음과 같이 2가지 방식을 사용할 수 있다.
+
+* 코드블럭코드 **```**
+
+* `<pre><code>{code}</code></pre>` 이용방식
+
+<pre>
+<code>
+
+```
+public class BootSpringBootApplication {
+  public static void main(String[] args) {
+    System.out.println("Hello, Honeymon");
+  }
+
+}
+```
+</code>
+</pre>
+
+```
+<pre>
+<code>
+public class BootSpringBootApplication {
+  public static void main(String[] args) {
+    System.out.println("Hello, Honeymon");
+  }
+
+}
+</code>
+</pre>
+
+```
+
+<br/>
+
+---
 
 ## **링크**
 
 링크를 거는 방법은 `[링크명](URL)`로 사용하면 된다.그러면 해당 링크명에 입력한 URL로 링크가 걸린다.
 
-[네이버](naver.com)
+```
+[link keyword](url)
+```
+
+ex)
 
 ```
 [네이버](naver.com)
 ```
+[네이버](naver.com)
+
+<br/>
+
+---
 
 ### 문서내 링크걸기
 
@@ -193,10 +308,114 @@ ex)
 #Stack Program
 ```
 
+<br/>
+
 ---
+
+## 이미지
+
+```
+![image keyword](/path/img.이미지확장자)
+
+![이미지이름](이미지파일경로)
+
+```
+
+#### 다른 방법
+
+* 사이즈 조절 기능 시작하기위해선 `<img width="" height=""></img>` 를 사용한다.
+
+ex)
+```
+<img src="/path/to/img.jpg" width="450px" height="300px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
+<img src="/path/to/img.jpg" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img>
+
+```
+
+<br/>
+
+---
+
+## 표만들기
+
+> | 문자와 - 문자로 표를 만든다
+
+```
+|제목|내용|설명|
+|---|---|---|
+|테스트1|테스트2|테스트3|
+|테스트4|테스트5|테스트6|
+|테스트7|테스트8|테스트9|
+```
+
+|제목|내용|설명|
+|---|---|---|
+|테스트1|테스트2|테스트3|
+|테스트4|테스트5|테스트6|
+|테스트7|테스트8|테스트9|
+
+#### 정렬 사용
+> : 문자를 사용하여 정렬을 정의할 수 있다.
+
+```
+|제목|내용|설명|
+|:---|---:|:---:|
+|왼쪽정렬|오른쪽정렬|중앙정렬|
+|왼쪽정렬|오른쪽정렬|중앙정렬|
+|왼쪽정렬|오른쪽정렬|중앙정렬|
+
+```
+
+|제목|내용|설명|
+|:---|---:|:---:|
+|왼쪽정렬|오른쪽정렬|중앙정렬|
+|왼쪽정렬|오른쪽정렬|중앙정렬|
+|왼쪽정렬|오른쪽정렬|중앙정렬|
+
+#### 셀 확장
+
+> |사이가 비어있으면 자동 확장된다.
+
+```
+|제목|내용|설명|
+|:---|:---:|---:|
+||중앙에서확장||
+|||오른쪽에서 확장|
+|왼쪽에서확장||
+
+```
+
+|제목|내용|설명|
+|:---|:---:|---:|
+||중앙에서확장||
+|||오른쪽에서 확장|
+|왼쪽에서확장||
+
+
+#### 셀 강조
+
+>일반적인 text와 마찬가지로 * 와 ** 를 통해 이탤릭/강조를 표시할 수 있다.
+span tag를 사용하면 컬러도 표시할 수 있다.
+
+```
+|제목|내용|설명|
+|---|---|---|
+|테스트1|*강조1*|테스트3|
+|테스트1|**강조2**|테스트3|
+|테스트1|<span style="color:red">강조3</span>|테스트3|
+```
+
+|제목|내용|설명|
+|---|---|---|
+|테스트1|*강조1*|테스트3|
+|테스트1|**강조2**|테스트3|
+|테스트1|<span style="color:red">강조3</span>|테스트3|
+
 
 <br/>
 <br/>
+
+---
 
 #### 참고
 

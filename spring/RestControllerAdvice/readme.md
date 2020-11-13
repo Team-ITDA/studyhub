@@ -58,7 +58,8 @@ public class PersonController {
 익셉션 패키지 디렉토리 구조
 
 
-![1](https://user-images.githubusercontent.com/43127088/99090006-62463580-2611-11eb-8b94-ba94c5cf2068.PNG)
+![3](https://user-images.githubusercontent.com/43127088/99095313-53af4c80-2618-11eb-95a7-ab35ad3b022e.PNG)
+
 
 
 우선 익셉션 - 핸들러 패키지를 만들고 GlobalExceptionHandler 클래스를 추가하였고, 에러 코드들을 작성했다. @ExceptionHandler을 이용하여 인자로 클래스들을 받아와 필요한 에러 코드들을 작성해주었다.
@@ -151,5 +152,25 @@ insert into person(`id`, `name`, `year_of_birthday`, `month_of_birthday`, `day_o
 json형태로 body 값이 찍히는 것을 볼 수 있다.
 
 
+ modifyPersonIfNameIsDifferent() 메서드의 마지막줄
+```java
+.andExpect(jsonPath("$.message").value("이름을 변경하지 않습니다."));
+```
+와 RenameNotPermittedException 클래스의 에서 받은 
+
+```java
+public class RenameNotPermittedException extends RuntimeException{
+    private static final String MESSAGE = "이름을 변경하지 않습니다.";
+``` 
+
+응답 문자열을 비교하여 똑같기 때문에 body에서 "이름을 변경하지 않습니다." 이 출력되는 것을 볼 수 있다.
+
+```java
+// {"message":"val"} 이라는 response를 받았는지 검증하려면 아래처럼 사용
+.andExpect(jsonPath("$.message").value("val"));
+```
+
+
+    
 @RestControllerAdvice와 @ExceptionHandler를 이용하여 중복된 코드들을 없애고 전역적인 예외처리를 해주었더니
 가독성이 훨씬 좋아지고 유지보수를 하는 일에 있어 훨씬 편리해졌다.

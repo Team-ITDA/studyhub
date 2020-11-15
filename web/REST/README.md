@@ -251,7 +251,7 @@ HTTP POST, http://myweb/users/
 
 ---
 
-###용어 정리
+### 용어 정리
 
 ※ [pushState](https://webisfree.com/2020-09-10/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-history-%EA%B0%9D%EC%B2%B4-%ED%8E%98%EC%9D%B4%EC%A7%80-%EA%B0%B1%EC%8B%A0-%EC%97%86%EC%9D%B4-%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%A0%84%ED%99%98-pushstate)
 * 페이지를 reload하지 않고 url만 변경해야 할 경우 사용한다.

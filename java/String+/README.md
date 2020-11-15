@@ -278,8 +278,8 @@ String은 불변의 객체라고 했다. 분명 String이 불변으로 설계된
 - **따라서, 문자열 연산이 엄청나게 많이 일어나지 않는 환경이라면 StringBuffer를 이용해 thread-safe하게 구현하는 것이 좋다는 의견이 있었다.**
 +
 
-**StringBuffer는 Thread-safe하기 때문에 하나의 문자열 객체를 여러 쓰레드에서 공유해야 하는 경우에 사용하자.**
-**StringBuilder는 Thread-safe하지 않다. 그러나 StringBuffer에 비해 속도가 빠르다. 즉, 여러 쓰레드에서 공유할 일이 없을 때 사용하자.**
+**StringBuffer는 Thread-safe하기 때문에 하나의 문자열 객체를 여러 쓰레드에서 공유해야 하는 경우에 사용하자.**  
+**StringBuilder는 Thread-safe하지 않다. 그러나 StringBuffer에 비해 속도가 빠르다. 즉, 여러 쓰레드에서 공유할 일이 없을 때 사용하자.**  
 **StringBuilder와 StringBuffer중 어떤 클래스가 더 좋다라고 순위를 매길수는 없다. 자기 주관을 가지고 사용하면 된다.**
 
 

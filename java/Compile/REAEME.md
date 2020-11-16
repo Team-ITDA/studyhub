@@ -1,3 +1,5 @@
+# JAVA 컴파일 과정
+
 자바는 OS에 독립적인 특징을 가지고 있다. 그것은 JVM(Java Virtual Machine) 덕분이다.
 
 JVM(Java Virtual Machine)은 OS와 프로그램 사이에서 기계어로 해석해 주는 역할을 하기 때문이다.

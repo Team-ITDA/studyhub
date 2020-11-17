@@ -156,7 +156,7 @@ json형태로 body 값이 찍히는 것을 볼 수 있다.
 ```java
 .andExpect(jsonPath("$.message").value("이름을 변경하지 않습니다."));
 ```
-와 RenameNotPermittedException 클래스의 에서 받은 
+와 RenameNotPermittedException 클래스에서 받은 
 
 ```java
 public class RenameNotPermittedException extends RuntimeException{

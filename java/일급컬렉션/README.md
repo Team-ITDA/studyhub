@@ -17,13 +17,13 @@
 public class ITDA {
   private final List<Member> members;
 
-  public ITDA(List<Member> members){
-    this.members = members;
-  }
+	public TeamITDA(List<Member> members) {
+		this.members = new ArrayList<>(members);
+	}
 
-  public List<Member> getMembers(){
-    return this.members;
-  }
+	public List<Member> getMembers(){
+		return Collections.unmodifiableList(members);
+	}
 }
 ```
 
@@ -71,7 +71,7 @@ public class PostService {
 
 위와 같은 메소드를 작성하였을 때 큰 문제점이 있습니다
 
-다른 사람들이 위 코드를 보았을 때 중요한 점은 <code>Post</code>   와 <code>Comment</code> 클래스가 <u>어떻게 되어있는지 알 수가 없고 궁금하지도 않습니다</u>
+다른 사람들이 위 코드를 보았을 때 중요한 점은 <u><code>Comment</code> 클래스가 변경되었을  때, PostService도 로직을 수정해야하는 사이드 이펙트가 발생합니다.</u>
 
 또한 이러한 문제점을 극복하고 클래스에서 사용자들이 좋아요를 누른 댓글들을 얻으려고 할 때마다 <u>위와 같은 로직이 반복적으로 구현</u>하게 됩니다
 
@@ -99,7 +99,7 @@ public class LikedComments {
   }
 
   public List<Comment> getList(){
-    return list;
+    return Collections.unmodifiableList(list);
   }
 }
 ```
@@ -112,13 +112,12 @@ public class PostService {
   public void isLikedComment(long postId){
     LikedComments likedComments = new LikedComments(postRepository.findPostById(postId));
 
-    //likedComments.getList();  
     //etc..
   }
 }
 ```
 
-클라이언트는 <code>getList()</code> 를 호출해서 불필요한 로직을 줄일 수 있겠습니다
+클라이언트는 자신의 로직에 불필요한 로직을 줄일 수 있겠습니다
 
 
 ### 2. 불변
@@ -127,7 +126,7 @@ public class PostService {
 
 즉, <u> 재할당 뿐만 아니라 내부 요소들이 바뀌지 않는</u> 안전한 인스턴스로 만들 수 있습니다  
 
-<code>final</code> 을 의미는 **재할당** 금지하는 것입니다
+<code>final</code> 의 의미는 **재할당** 금지하는 것입니다
 
 제가 처음 프로그래밍을 배울 때에는 <code>final = 상수</code> 라는 키워드로
 
@@ -137,7 +136,7 @@ public class PostService {
 
 ```java
 public static void main(String[] args) {
-  final List<Integer> numbers = Arrays.asList(1,2,3);
+  final List<Integer> numbers = new ArrayList<>(Arrays.asList(1,2,3));
   numbers.add(4); // 가능
   numbers = new ArrayList<>(); // 컴파일 에러!
 }
@@ -152,15 +151,21 @@ class Numbers {
   private final List<Integer> list;
 
   public Numbers(List<Integer> list){
-    this.list = list;
+    this.list = new ArrayList<>(list);
   }
 
   public List<Integer> getList(){
-    return list;
+    return Collections.unmodifiableList(list);
   }
 }
 ```
-일급 컬렉션을 사용한다면 컬렉션 내부 요소들의 바뀌지 않는 불변을 보장할 수 있습니다
+
+생성자에서 파라미터로 받아온 컬렉션 객체를 이용하여 필드를 초기화하고
+
+<code>Collections.unmodifiableList()</code> 메소드를 이용하여
+<code>getter</code> 를 통한 참조한 필드 요소들이 변경될 위험을 방지한다면
+
+불변함을 보장할 수 있습니다
 
 ### 3. 상태와 행위를 한 곳에서 관리
 
@@ -210,7 +215,7 @@ public class ITDA {
   }
 
   public List<String> getMembers(){
-    return members;
+    return Collection.unmodifiableList(members);
   }
 }
 
@@ -248,14 +253,14 @@ List<String> members = Arrays.asList("zeroGone", "jinminYang", "meeeansub");
 
 ```java
 class Members {
-  private List<String> names;
+  private final List<String> names;
 
   public Members(List<String> names){
-    this.names = names;
+    this.names = new ArrayList<>(names);
   }
 
   public List<String> getNames(){
-    return names;
+    return Collections.unmodifiableList(names);
   }
 }
 ```

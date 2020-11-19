@@ -94,25 +94,19 @@ public class LikedComments {
         list.add(comment);
       }
     }
-
-    //etc..
   }
 
-  public List<Comment> getList(){
-    return Collections.unmodifiableList(list);
-  }
+  //이후 필요한 메소드
 }
 ```
 
-정도로 구현할 수 있을 것 같고,
+정도로 구현하여 비즈니스 로직을 위한 자료구조인 <code>LikedComments</code> 만들고
 
 ```java
 @Service
 public class PostService {
-  public void isLikedComment(long postId){
-    LikedComments likedComments = new LikedComments(postRepository.findPostById(postId));
-
-    //etc..
+  public LikedComments isLikedComment(long postId){
+    return new LikedComments(postRepository.findPostById(postId));
   }
 }
 ```

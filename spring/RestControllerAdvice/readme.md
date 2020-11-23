@@ -20,6 +20,21 @@ API 서버를 위해 json형식의 파싱 및 전역척인 예외처리가 가�
 
 @ExceptionHandler를 사용하여 해당 컨트롤러에 대한 예외 처리를 한다고 하자.
 
+설명하기에 앞서 ExceptionHandler에 관해 간단하게 설명을 하자면,
+
+![1](https://user-images.githubusercontent.com/43127088/99930344-1410ff00-2d94-11eb-98c1-3c39ef775eb2.PNG)
+
+예외처리 할 떄, Controller에서 이런식으로 try { } ~ catch { } 문으로 처리를 해주면
+Status가 200으로 떠서 클라이언트에서는 이 정보가 처리가 된 것인지, 안 된 것인지 알기가 어렵기 떄문에 곤란하다.
+위를 보면 Headers, Content type, Body에 아무 것도 들어오지 않아서 어떻게 처리가 되었는지 알 수가 없다.
+
+그래서 조금 더 나은 방법으로,
+
+@ExceptionHandler를 지정해준다.
+
+@ExceptionHandler같은 경우는 @Controller, @RestController가 적용된 Bean내에서 발생하는 예외를 잡아서 하나의 메서드에서 처리해주는 기능을 한다. 인자로 캐치하고 싶은 예외 클래스를 등록해준다.
+
+
 ```java
 @RestController
 public class PersonController {
@@ -40,13 +55,16 @@ public class PersonController {
         //
     }
     
-     @ExceptionHandler(PersonException.class)
-        public ResponseEntity<ErrorResponse> handlePersonException(final PersonException error) {
-           //
-        }
-
+    @ExceptionHandler(value = RenameNotPermittedException.class){
+        public ResponseEntity<ErrorResponse> handleRenameNoPermittedException(RenameNotPermittedException ex)
+            return new ResponseEntity<> (ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
 }
 ```
+
+![2](https://user-images.githubusercontent.com/43127088/99930427-59353100-2d94-11eb-9099-2a0e2de79477.png)
+
+@ExceptionHandler를 이용해서 예외 처리를 해주었더니 Status = 400, Body = "이름을 변경하지 않습니다" 라고 출력되는 것을 볼 수 있다.
 
 해당 컨트롤러에서 발생하는 예외는 handlePersonException 메서드에서 처리할 수 있다. 하지만 컨트롤러가 늘어난다면 어떨까? 컨트롤러가 늘어나면서 예외 처리에 대한 중복 코드도 늘어날 것이고 많은 양의 코드를 다룰 것이다. 그러면 유지보수 또한 어려워질 것이다.
 
@@ -77,7 +95,7 @@ public class GlobalExceptionHandler {
     }
 }
 ```
-또 익셉션 패키지에 RenameNotPermittedException 클래스를 만들어 에러메시지를 작성해 주었다.
+또 익셉션 패키지에 RenameNotPermittedException 클래스를 만들어 에러메시지를 작성해 주었다. RenameNotPermittedException 클래스가 RunTimeException을 상속 받아 RunTimeException이 발생했을 경우, 해당 메서드를 실행한다. 
 ```java
 @Slf4j
 public class RenameNotPermittedException extends RuntimeException{
@@ -93,7 +111,7 @@ public class RenameNotPermittedException extends RuntimeException{
 
 ```java
 @Autowired
-    private GlobalExceptionHandler globalExceptionHandler;
+private GlobalExceptionHandler globalExceptionHandler;
 ```
 
 빈 주입을 해주었고 (사실 이렇게 필드 주입을 하는 것 보다 생성자 주입을 하는 것이 더 좋은 코드고 생성자 주입은 [여기](https://github.com/Team-ITDA/studyhub/tree/main/spring/Autowired) 볼 수 있다.)

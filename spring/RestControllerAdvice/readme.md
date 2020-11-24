@@ -119,10 +119,10 @@ private GlobalExceptionHandler globalExceptionHandler;
 ```java
 public PersonControllerTest {
 
-@Autowired
+    @Autowired
     private GlobalExceptionHandler globalExceptionHandler;
 
-@BeforeEach     // 해당 어노테이션은 메서드 매 test마다 먼저 실행되게 하는 구문
+    @BeforeEach  // 해당 어노테이션은 메서드 매 test마다 먼저 실행되게 하는 구문
     void beforeEach() {
         mockMvc = MockMvcBuilders
                 .standaloneSetup(personController)
@@ -152,17 +152,17 @@ insert into person(`id`, `name`, `year_of_birthday`, `month_of_birthday`, `day_o
 
 ```java
 @Test
-    void modifyPersonIfNameIsDifferent() throws Exception {
-        PersonDto dto = PersonDto.of(1, 'minsub', 1994, 10, 10);
+void modifyPersonIfNameIsDifferent() throws Exception {
+    PersonDto dto = PersonDto.of(1, 'minsub', 1994, 10, 10);
 
-        mockMvc.perform(
-                MockMvcRequestBuilders.put("/api/person/1")
-                        .contentType(MediaType.APPLICATION_JSON_UTF8)
-                        .content(toJsonString(dto)))
-                .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.code").value(400))
-                .andExpect(jsonPath("$.message").value("이름을 변경하지 않습니다."));
-    }
+    mockMvc.perform(
+            MockMvcRequestBuilders.put("/api/person/1")
+                    .contentType(MediaType.APPLICATION_JSON_UTF8)
+                    .content(toJsonString(dto)))
+            .andExpect(status().isBadRequest())
+            .andExpect(jsonPath("$.code").value(400))
+            .andExpect(jsonPath("$.message").value("이름을 변경하지 않습니다."));
+}
 ```
 
 ![2](https://user-images.githubusercontent.com/43127088/99090540-1e9ffb80-2612-11eb-8042-2edc88339662.PNG)

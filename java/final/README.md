@@ -465,6 +465,6 @@ list.add("World");
 
 **참고 및 출처)**
 
-[https://gmlwjd9405.github.io/2018/08/06/java-final.html](https://gmlwjd9405.github.io/2018/08/06/java-final.html)
-[https://advenoh.tistory.com/13](https://advenoh.tistory.com/13)
-[https://djkeh.github.io/articles/Why-should-final-member-variables-be-conventionally-static-in-Java-kor/](https://djkeh.github.io/articles/Why-should-final-member-variables-be-conventionally-static-in-Java-kor/)
+[https://gmlwjd9405.github.io/2018/08/06/java-final.html](https://gmlwjd9405.github.io/2018/08/06/java-final.html)  
+[https://advenoh.tistory.com/13](https://advenoh.tistory.com/13)  
+[https://djkeh.github.io/articles/Why-should-final-member-variables-be-conventionally-static-in-Java-kor/](https://djkeh.github.io/articles/Why-should-final-member-variables-be-conventionally-static-in-Java-kor/)  

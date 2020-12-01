@@ -197,7 +197,7 @@ StaticTest.printName() 을 사용하려고 하는데, `name2`은 new 연산을 �
     <td>의미</td>
   </tr>
   <tr>
-    <td rowspan ="2">final</td>
+    <td rowspan ="2">static</td>
     <td>맴버 변수</td>
     <td>모든 인스턴스에 공통적으로 사용되는 클래스변수가 된다. <br/> 클래스변수는 인스턴스를 생성하지 않고도 사용 가능하다. <br/> 클래스가 메모리에 로드될 때 생성된다. </td>
   </tr>

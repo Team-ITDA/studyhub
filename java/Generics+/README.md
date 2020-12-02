@@ -34,7 +34,7 @@ public static void main(String[] args) {
 }
 ```
 
-위 main 메서드를 실행하면 컴파일 에러가 난다. 타입이 맞지 않기 때문이다. 제네릭은 다른 타입이 들어와서 충돌하는 것을 방지하기 위한 타입 안전성이 주된 목적이기에 제네릭을 구현한 List에도 위와 같이 컴파일 에러가 나는 것이다.
+위 main 메서드를 실행하면 컴파일 에러가 난다. 타입이 맞지 않기 때문이다. 제네릭은 다른 타입이 들어와서 충돌하는 것을 방지하기 위한, 타입 안전성이 주된 목적이기에 제네릭을 구현한 List에도 위와 같이 컴파일 에러가 나는 것이다.
 
 Object 클래스는 모든 클래스의 상위 타입이지만 `List<Object>`는 `List<Integer>`, `List<String>`등 모든 타입 List의 상위 타입은 아니라는 점을 기억해야 한다.
 
@@ -121,7 +121,7 @@ public static void main(String[] args) {
 <T extends Number & Comparable>
 ```
 
-두 번째 와일드 카드는 하위 타입, 상위 타입을 둘 다 제한할 수 있고 제네릭 메서드는하위 타입만을 제한할 수 있다. 즉 제네릭 메서드는 extends 키워드밖에 사용할 수 없고 와일드 카드는 아래와 같이 extends와 super 키워드를 둘 다 사용할 수 있다.
+두 번째 와일드 카드는 하위 타입, 상위 타입을 둘 다 제한할 수 있고 제네릭 메서드는 하위 타입만을 제한할 수 있다. 즉 제네릭 메서드는 extends 키워드밖에 사용할 수 없고 와일드 카드는 아래와 같이 extends와 super 키워드를 둘 다 사용할 수 있다.
 
 ```java
 public static void printList(List<? super Integer> list) {
@@ -135,7 +135,7 @@ public static void printList(List<? extends Number> list) {
 
 어느 상황에 무엇을 사용하면 좋을 것인가는 상황에 따라 다르게 판단할 수 있을 것 같다. 판단에 도움을 줄 만한 의견이 [SLiPP](https://www.slipp.net/questions/202)에 있었다.
 
-[http://cfile4.uf.tistory.com/image/991F4D475FC6251707DF03](http://cfile4.uf.tistory.com/image/991F4D475FC6251707DF03)
+![](http://cfile4.uf.tistory.com/image/991F4D475FC6251707DF03)
 
 추가로 Arrays 클래스에서는 제네릭 메서드와 와일드 카드를 어떻게 썼는지도 살펴보며 각각의 용도나 쓰임새에 대해 다시 한번 스스로 정리해보자.
 
@@ -157,9 +157,9 @@ public static <T,U> T[] copyOfRange(U[] original, int from, int to, Class<? exte
 
 ## Type Erasure(타입 소거)
 
-제네릭의 [Type Erasure(타입 소거)](https://docs.oracle.com/javase/tutorial/java/generics/erasure.html)는 컴파일 시에만 타입 체크를 해서 타입이 안 맞는 것을 잡아낸 후 컴파일 에러를 발생시키고 문제없이 컴파일 됐다면 런타임 중에는 타입 정보를 전부 버리는 것이다.
+제네릭의 [Type Erasure(타입 소거)](https://docs.oracle.com/javase/tutorial/java/generics/erasure.html)는 컴파일 시 타입 체크를 해서 타입이 안 맞는 것을 잡아낸 후 컴파일 에러를 발생시키고 문제없이 컴파일 됐다면 런타임 중에는 타입 정보를 전부 버리는 것이다.
 
-아래 예제를 살펴보자.
+무슨 소린가 싶다. 아래 예제를 살펴보자.
 
 ```java
 public class Car<T> {
@@ -210,6 +210,8 @@ public static void main(String[] args) {
 
 ```
 
+이 처럼 컴파일 시 타입 체크를 통과했다면 제네릭 클래스의 타입 정보를 저장하지 않고 소거시켜 버린다. 바이트 코드 어딘가에는 저장되어 있지만 필요하다면 위 main 메서드처럼 형 변환을 해놓기에 컴파일러가 특별히 그 정보를 꺼내 사용할 일은 거의 없다.
+
 이를 검증하기 위해 아래와 같이 Reflection API로 Car 객체의 Type을 출력하는 main 메서드를 실행해보면
 
 ```java
@@ -255,6 +257,7 @@ public class Car {
 그렇다면 이런 귀찮은 타입 소거를 자바 설계자들은 왜 적용했을까? 답은 호환성에 있다.
 
 제네릭은 JDK 5부터 도입했다. 기존의 코드를 모두 수용하면서 제네릭을 사용하는 새로운 코드와의 호환성을 유지하기 위해 타입 소거를 하는 방향으로 간 것이다.
+다시말하면 타입 안전성을 지키기 위해 컴파일시 타입 체크를 하고 호환성을 지키기 위해 런타임에는 타입 정보를 전부 소거시키는 것이다.
 
 ```java
 List list = new ArrayList();

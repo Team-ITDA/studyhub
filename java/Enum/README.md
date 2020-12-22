@@ -35,17 +35,17 @@ Card 클래스
 
 ```java
 class Card {
-		static final int CLOVER = : 0;
-		static final int HEART = 1;
-		static final int DIAMOND = 2;
-		static final int SPADE = 3;
+    static final int CLOVER = : 0;
+    static final int HEART = 1;
+    static final int DIAMOND = 2;
+    static final int SPADE = 3;
 
-		static final int TWO = 0;
-		static final int THREE = 1；
-		static final int FOUR = 2;
+    static final int TWO = 0;
+    static final int THREE = 1；
+    static final int FOUR = 2;
 
-		final int kind;
-		final int num;
+    final int kind;
+    final int num;
 }
 
 ```
@@ -54,12 +54,12 @@ enum을 활용
 
 ```java
 class Card {
-		enum Kind    { CLOVER, HEART, DIAMOND, SPADE }  // 열거형 Kind를정의
-		enum Value   { TWO, THREE, FOUR }               // 열거형 Value를정의
+    enum Kind    { CLOVER, HEART, DIAMOND, SPADE }  // 열거형 Kind를정의
+    enum Value   { TWO, THREE, FOUR }               // 열거형 Value를정의
 
 
-		final Kind kind; // 타입이 int가 아닌 Kind임에 유의하자.
-		final Value value;
+    final Kind kind; // 타입이 int가 아닌 Kind임에 유의하자.
+    final Value value;
 }
 ```
 
@@ -131,12 +131,12 @@ enum Direction {
 
 ```java
 class Unit {
-		int x, y; // 유닛의 위치
-		Direction dir; // 열거형을 인스턴스 변수로 선언
+    int x, y; // 유닛의 위치
+    Direction dir; // 열거형을 인스턴스 변수로 선언
 
-		void init () {
-				dir = Direction.EAST; // 유닛의 방향을 EAST로 초기화
-		}
+    void init () {
+        dir = Direction.EAST; // 유닛의 방향을 EAST로 초기화
+    }
 }
 ```
 
@@ -169,11 +169,11 @@ equals()가 아닌 '=='로 비교가 가능하다는 것은 그만큼 빠른 성
 
 ```java
 if(dir == Direction.EAST) {
-		x++;
+    x++;
 } else if (dir > Direction.WEST) { // 에러 . 열거형 상수에 비교연산자 사용불가
-		...
+    ...
 } else if (dir.compareTo (Direction.WEST) > 0) { // compareTo ()는 가능
-		...
+    ...
 }
 ```
 
@@ -237,7 +237,7 @@ int result2 = dir2.compareTo(dir1); // 3
 Direction[] dirs = Direction.values();
 
 for(Direction dir : dirs ) {
-		System.out.println(dir );
+    System.out.println(dir );
 }
 ```
 
@@ -261,10 +261,10 @@ Enum클래스에 정의된 ordinal()이 열거형 상수가 정의된 순서를 
 
 ```java
 enum Direction {
-		EAST(l),
-		SOUTH(5),
-		WEST(-l),
-		NORTH(10)
+    EAST(l),
+    SOUTH(5),
+    WEST(-l),
+    NORTH(10)
 }
 ```
 
@@ -280,16 +280,16 @@ enum Direction {
 
 ```java
 enum Direction {
-		EAST(l),
-		SOUTH(5),
-		WEST(-l),
-		NORTH(10); //끝에 를추가해야한다.
+    EAST(l),
+    SOUTH(5),
+    WEST(-l),
+    NORTH(10); //끝에 를추가해야한다.
 
-		private final int value; // 정수를 저장할 필드 (인스턴스 변수) 를 추가
+    private final int value; // 정수를 저장할 필드 (인스턴스 변수) 를 추가
 
-		Direction (int value) { this .value = value; } // 생성자를 추가
+    Direction (int value) { this .value = value; } // 생성자를 추가
 
-		public int getValue() { return value; }
+    public int getValue() { return value; }
 }
 ```
 
@@ -297,9 +297,9 @@ enum Direction {
 
 ```java
 enum Direction {
-		...
-		Direction(int value) { // private Direction(int value) 와 동일
-		...
+    ...
+    Direction(int value) { // private Direction(int value) 와 동일
+    ...
 }
 ```
 
@@ -312,15 +312,15 @@ Direction d = new Direction(1); // 에러. 열거형의 생성자는 외부에�
 
 ```java
 enum Direction {
-		EAST(1, ">"), SOUTH(2, "V"), WEST(3, "<"), NORTH(4, "A");
+    EAST(1, ">"), SOUTH(2, "V"), WEST(3, "<"), NORTH(4, "A");
 
-		private final int value;
-		private final String symbol;
+    private final int value;
+    private final String symbol;
 
-		Direction (int value. String symbol) { // 접근 제어자 private이 생략됨
+    Direction (int value. String symbol) { // 접근 제어자 private이 생략됨
 
-		this.value = value;
-		this•symbol = symbol;
+    this.value = value;
+    this•symbol = symbol;
 }
 
 public int getValue() { return value; }
@@ -338,20 +338,20 @@ public String getSymbol() { return symbol; }
 
 ```java
 enum Transportation {
-		BUS(100),
-		TRAIN(150),
-		SHIP(100),
-		AIRPLANE(300);
+	BUS(100),
+	TRAIN(150),
+	SHIP(100),
+	AIRPLANE(300);
 
-		private final int BASIC FARE;
+	private final int BASIC FARE;
 
-		private Transportation(int basicFare) {
-				BASIC_FARE = basicFare;
-		}
+	private Transportation(int basicFare) {
+			BASIC_FARE = basicFare;
+	}
 
-		int fare () { // 운송 요금을 반환
-				return BASIC_FARE;
-		}
+	int fare () { // 운송 요금을 반환
+			return BASIC_FARE;
+	}
 }
 ```
 
@@ -363,39 +363,39 @@ enum Transportation {
 
 ```java
 enum Transportation {
-		BUS(100) {
-				int fare (int distance) {
-						return distance*BASIC_FARE;
-				}
-		},
-
-		TRAIN(150) {
-				int fare (int distance) {
-						return distance*BASIC_FARE;
-				}
-		},
-
-		SHIP(100) {
-				int fare (int distance) {
-						return distance*BASIC_FARE;
-				}
-		},
-
-		AIRPLANE(300) {
-				int fare (int distance) {
-						return distance*BASIC_FARE;
-				}
-		};
-
-		abstract int fare(int distance); // 거리에 따른 요금을 계산하는 추상 메서드
-
-		protected final int BASIC_FARE; // protected로 해야 각 상수에서 접근가능
-
-		Transportation(int basicFare) {
-				BASIC_FARE = basicFare;
+	BUS(100) {
+		int fare (int distance) {
+			return distance*BASIC_FARE;
 		}
+	},
 
-		public int getBasicFare () { return BASIC_FARE; }
+	TRAIN(150) {
+		int fare (int distance) {
+			return distance*BASIC_FARE;
+		}
+	},
+
+	SHIP(100) {
+		int fare (int distance) {
+			return distance*BASIC_FARE;
+		}
+	},
+
+	AIRPLANE(300) {
+		int fare (int distance) {
+			return distance*BASIC_FARE;
+		}
+	};
+
+	abstract int fare(int distance); // 거리에 따른 요금을 계산하는 추상 메서드
+
+	protected final int BASIC_FARE; // protected로 해야 각 상수에서 접근가능
+
+	Transportation(int basicFare) {
+		BASIC_FARE = basicFare;
+	}
+
+	public int getBasicFare () { return BASIC_FARE; }
 }
 ```
 
@@ -407,20 +407,20 @@ enum Transportation {
 
 ```java
 public enum Type {
-    // 상수("연결할 문자")
-    WALKING("워킹화"),
-    RUNNING("러닝화"),
-    TRACKING("트래킹화"),
-    HIKING("등산화");
+	// 상수("연결할 문자")
+	WALKING("워킹화"),
+	RUNNING("러닝화"),
+	TRACKING("트래킹화"),
+	HIKING("등산화");
 
     final private String name;
 
     private Type(Stirng name) { // enum에서 생성자 같은 역할
-				this.name = name;
+	    this.name = name;
     }
 
     public String getName() { // 문자를 받아오는 함수
-				return name;
+	    return name;
     }
 }
 
@@ -482,16 +482,16 @@ enum Direction { EAST, SOUTH, WEST, NORTH }
 
 ```java
 class Direction {
-		static final Direction EAST = new Direction("EAST");
-		static final Direction SOUTH = new Direction("SOUTH");
-		static final Direction WEST = new Direction ("WEST") ;
-		static final Direction NORTH = new Direction("NORTH");
+	static final Direction EAST = new Direction("EAST");
+	static final Direction SOUTH = new Direction("SOUTH");
+	static final Direction WEST = new Direction ("WEST") ;
+	static final Direction NORTH = new Direction("NORTH");
 
-		private String name;
+	private String name;
 
-		private Direction(String name) {
-				this.name = name;
-		}
+	private Direction(String name) {
+		this.name = name;
+	}
 }
 ```
 

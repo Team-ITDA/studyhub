@@ -25,7 +25,7 @@
 
 ----------
 
-###Parsing 과정
+### Parsing 과정
 - 브라우저는 HTML을 DOM 트리로 Parsing(파싱)한다.
   - HTML 파싱에는 토큰화와 트리 구조가 포함된다.
   - HTML 토큰에는 시작 태그와 마침 태그가 포함되며, 속성 이름과 값도 포함된다.
@@ -42,23 +42,23 @@
 
 ----------
 ### JavaScript JSON
- JSON 의 일반적인 용도는 웹 서버와 data를 주고 받는 것이다.
- JSON은 네트워크 데이터 전송방식의 표준 Format으로 사용되고 있다. (이외에는 XML, HTML)
- JSON은 String 문자열 이므로 실제 JavaScript에서 사용하기 위해서는 파싱하여 객체로 사용할 수 있다.
- 위와 같은 상황에서 사용하는 객체가 JSON 객체이다.
- JSON 객체에는 parse와 stringify가 내장되어 있어서 `String -> Object` `Object -> String`으로 변환할 수 있다.
+ - JSON 의 일반적인 용도는 웹 서버와 data를 주고 받는 것이다.
+ - JSON은 네트워크 데이터 전송방식의 표준 Format으로 사용되고 있다. (이외에는 XML, HTML)
+ - JSON은 String 문자열 이므로 실제 JavaScript에서 사용하기 위해서는 파싱하여 객체로 사용할 수 있다.
+ - 위와 같은 상황에서 사용하는 객체가 JSON 객체이다.
+ - JSON 객체에는 parse와 stringify가 내장되어 있어서 `String -> Object` `Object -> String`으로 변환할 수 있다.
 
 ##### JSON 객체의 parse (String -> Object 변환)
-웹 서버에서 data를 수신 할 때 data는 항상 문자열입니다.
-JSON Format 방식을 가지고 있는 String 데이터를 parse를 통해 Object로 변환하는 것이다.
+- 웹 서버에서 data를 수신 할 때 data는 항상 문자열입니다.
+- JSON Format 방식을 가지고 있는 String 데이터를 parse를 통해 Object로 변환하는 것이다.
 ```JavaScript
 let jsonString = JSON.parse('{"name" : "Jinmin", "age" : 26}');
 ```
 ![parse](img/parse.jpg);
 
 ##### JSON 객체의 stringify (Object -> String 변환)
-웹 서버에 data를 보낼 때 data는 문자열이어야합니다.
-Object를 JSON Format 방식을 가진 상태로 타입을 String으로 변환하는 것이다.
+ - 웹 서버에 data를 보낼 때 data는 문자열이어야합니다.
+ - Object를 JSON Format 방식을 가진 상태로 타입을 String으로 변환하는 것이다.
 ```JavaScript
 let object = {name: "Jinmin", age: 26};
 let objectToJson = JSON.stringify(object);
